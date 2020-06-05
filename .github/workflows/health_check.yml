@@ -9,7 +9,7 @@ on:
 
 jobs:
   Run:
-    timeout-minutes: 20
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -24,4 +24,4 @@ jobs:
         run: ${{ secrets.TREEBEARD_CONFIGURE_CMD }}
       - name: Run Test
         run: |
-          treebeard run -n run_on_schedule.ipynb
+          treebeard run -n run_on_schedule.ipynb --watch --confirm
