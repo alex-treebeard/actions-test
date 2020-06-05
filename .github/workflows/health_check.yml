@@ -1,0 +1,24 @@
+name: Health Check
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+
+jobs:
+  Run:
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Install Treebeard
+        run: |
+          pip install git+https://github.com/treebeardtech/treebeard.git@runtime-override#subdirectory=treebeard-lib
+      - name: Set Config
+        run: ${{ secrets.TREEBEARD_CONFIGURE_CMD }}
+      - name: Run Test
+        run: |
+          treebeard run -n run_on_schedule.ipynb
