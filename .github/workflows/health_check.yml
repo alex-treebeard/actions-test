@@ -19,7 +19,7 @@ jobs:
           python-version: 3.7
       - name: Install Treebeard
         run: |
-          pip install git+https://github.com/treebeardtech/treebeard.git@runtime-override#subdirectory=treebeard-lib
+          pip install treebeard
       - name: Set Config
         run: ${{ secrets.TREEBEARD_CONFIGURE_CMD }}
       - name: Run Test
