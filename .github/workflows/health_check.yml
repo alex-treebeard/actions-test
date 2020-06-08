@@ -10,6 +10,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run
-        uses: treebeardtech/treebeard-action@7e6a1f509771fc36bf5b88f5dc2869782f4fe627
+        uses: alex-treebeard/treebeard-action@7e6a1f509771fc36bf5b88f5dc2869782f4fe627
         with:
           api-key: ${{ secrets.TREEBEARD_API_KEY }}
