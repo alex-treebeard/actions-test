@@ -15,3 +15,4 @@ jobs:
         uses: alex-treebeard/treebeard-action@dev
         with:
           api-key: ${{ secrets.TREEBEARD_API_KEY }}
+          notebooks: "run_on_schedule.ipynb"
