@@ -1,27 +1,15 @@
-name: Health Check
-
-on:
-  schedule:
-    - cron: "0 0 * * *"
-  push:
-    branches:
-      - master
+on: [push]
 
 jobs:
-  Run:
-    timeout-minutes: 60
+  hello_world_job:
     runs-on: ubuntu-latest
+    name: Run treebeard
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python 3.7
-        uses: actions/setup-python@v1
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run
+        uses: treebeardtech/treebeard-action@7e6a1f509771fc36bf5b88f5dc2869782f4fe627
         with:
-          python-version: 3.7
-      - name: Install Treebeard
-        run: |
-          pip install treebeard
-      - name: Set Config
-        run: ${{ secrets.TREEBEARD_CONFIGURE_CMD }}
-      - name: Run Test
-        run: |
-          treebeard run -n run_on_schedule.ipynb --watch --confirm
+          api-key: ${{ secrets.TREEBEARD_API_KEY }}
