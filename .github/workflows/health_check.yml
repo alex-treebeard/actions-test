@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run
-        uses: alex-treebeard/treebeard-action@dev
+        uses: treebeardtech/treebeard
         with:
           api-key: ${{ secrets.TREEBEARD_API_KEY }}
           notebooks: "run_on_schedule.ipynb"
