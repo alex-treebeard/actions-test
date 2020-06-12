@@ -24,4 +24,4 @@ jobs:
           api-key: ${{ secrets.TREEBEARD_API_KEY }}
           notebooks: "run_on_schedule.ipynb"
         env:
-          DOCKER_REGISTRY: 524997937988.dkr.ecr.eu-central-1.amazonaws.com/treebeard
+          DOCKER_REGISTRY: 524997937988.dkr.ecr.eu-central-1.amazonaws.com
