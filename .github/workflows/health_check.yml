@@ -15,5 +15,5 @@ jobs:
           notebooks: "run_on_schedule.ipynb"
         env:
           DOCKER_REGISTRY: 524997937988.dkr.ecr.eu-central-1.amazonaws.com
-          DOCKER_LOGIN: AWS
+          DOCKER_USERNAME: AWS
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
