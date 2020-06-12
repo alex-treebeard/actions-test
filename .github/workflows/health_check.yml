@@ -16,6 +16,7 @@ jobs:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
+        run: docker pull 524997937988.dkr.ecr.eu-central-1.amazonaws.com/treebeardtech/actions-test:cli-latest # test
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run
