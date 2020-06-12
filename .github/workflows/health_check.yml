@@ -7,19 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Run treebeard
     steps:
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-2
-      # - name: Login to Amazon ECR
-      #   id: login-ecr
-      #   uses: aws-actions/amazon-ecr-login@v1
-      - run: aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 524997937988.dkr.ecr.eu-central-1.amazonaws.com
-      - run: docker pull 524997937988.dkr.ecr.eu-central-1.amazonaws.com/treebeardtech/actions-test:cli-latest # test
-      - name: Checkout
-        uses: actions/checkout@v2
       - name: Run
         uses: treebeardtech/treebeard@local-docker
         with:
@@ -27,3 +14,5 @@ jobs:
           notebooks: "run_on_schedule.ipynb"
         env:
           DOCKER_REGISTRY: 524997937988.dkr.ecr.eu-central-1.amazonaws.com
+          DOCKER_LOGIN: AWS
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
