@@ -21,5 +21,4 @@ jobs:
           pip install git+https://github.com/treebeardtech/treebeard.git@local-docker#subdirectory=treebeard-lib
           treebeard configure --api_key ${{ secrets.TREEBEARD_API_KEY }} --project_id "$GITHUB_REPOSITORY_OWNER"
           export DOCKER_REGISTRY=${{ steps.login-ecr.outputs.registry }}
-          treebeard run --confirm --dockerless --upload
           treebeard run --confirm
