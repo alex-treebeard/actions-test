@@ -17,9 +17,9 @@ jobs:
       - uses: actions/setup-python@v2
       - name: Run
         run: |
-          mkdir -p "/var/$GITHUB_REPOSITORY"
-          cp -r . "/var/$GITHUB_REPOSITORY"
-          cd "/var/$GITHUB_REPOSITORY"
+          mkdir -p "$GITHUB_REPOSITORY"
+          cp -r . "$GITHUB_REPOSITORY"
+          cd "$GITHUB_REPOSITORY"
           pip install git+https://github.com/treebeardtech/treebeard.git@local-docker#subdirectory=treebeard-lib
           treebeard configure --api_key ${{ secrets.TREEBEARD_API_KEY }} --project_id "$GITHUB_REPOSITORY_OWNER"
           export DOCKER_REGISTRY=${{ steps.login-ecr.outputs.registry }}
