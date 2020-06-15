@@ -17,6 +17,8 @@ jobs:
       - uses: actions/setup-python@v2
       - name: Run
         run: |
+          pwd
+          printenv
           mkdir -p "$GITHUB_REPOSITORY"
           cp -r . "$GITHUB_REPOSITORY"
           cd "$GITHUB_REPOSITORY"
