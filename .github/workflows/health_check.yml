@@ -7,13 +7,20 @@ jobs:
     runs-on: ubuntu-latest
     name: Run treebeard
     steps:
-      - uses: actions/checkout@v2
-      - name: Run
-        uses: treebeardtech/treebeard@local-docker
+      - uses: aws-actions/configure-aws-credentials@v1
         with:
-          api-key: ${{ secrets.TREEBEARD_API_KEY }}
-          notebooks: "run_on_schedule.ipynb"
-        env:
-          DOCKER_REGISTRY: 524997937988.dkr.ecr.eu-central-1.amazonaws.com
-          DOCKER_USERNAME: AWS
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
+      - uses: aws-actions/amazon-ecr-login@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - name: Run
+        run: |
+          mkdir -p "/var/$GITHUB_REPOSITORY"
+          cp -r . "/var/$GITHUB_REPOSITORY"
+          cd "/var/$GITHUB_REPOSITORY"
+          pip install git+https://github.com/treebeardtech/treebeard.git@local-docker#subdirectory=treebeard-lib
+          treebeard configure --api_key ${{ secrets.TREEBEARD_API_KEY }} --project_id "$GITHUB_REPOSITORY_OWNER"
+          export DOCKER_REGISTRY=${{ steps.login-ecr.outputs.registry }}
+          treebeard run --confirm
