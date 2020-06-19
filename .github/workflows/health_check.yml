@@ -19,6 +19,4 @@ jobs:
       - uses: treebeardtech/treebeard@local-docker
         with:
           api-key: ${{ secrets.TREEBEARD_API_KEY }}
-          docker-username: treebeardtech
-          docker-password: "${{ secrets.DOCKER_PASSWORD }}"
           docker-registry: "${{ steps.login-ecr.outputs.registry }}"
