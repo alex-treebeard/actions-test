@@ -16,10 +16,9 @@ jobs:
         id: login-ecr
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - name: Run
-        run: |
-          printenv
-          pip install git+https://github.com/treebeardtech/treebeard.git@local-docker#subdirectory=treebeard-lib
-          treebeard configure --api_key ${{ secrets.TREEBEARD_API_KEY }} --project_id "$GITHUB_REPOSITORY_OWNER"
-          export DOCKER_REGISTRY=${{ steps.login-ecr.outputs.registry }}
-          treebeard run --confirm
+      - uses: treebeardtech/treebeard@local-docker
+        with:
+          api-key: ${{ secrets.TREEBEARD_API_KEY }}
+          docker-username: treebeardtech
+          docker-password: "${{ secrets.DOCKER_PASSWORD }}"
+          docker-registry: "${{ steps.login-ecr.outputs.registry }}"
