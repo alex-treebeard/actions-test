@@ -1,2 +1,3 @@
 notebooks:
   - run_on_push.ipynb
+debug: true
