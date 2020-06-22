@@ -15,6 +15,7 @@ jobs:
         id: login-ecr
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
+      - run: printenv
       - uses: treebeardtech/treebeard@local-docker
         with:
           api-key: ${{ secrets.TREEBEARD_API_KEY }}
