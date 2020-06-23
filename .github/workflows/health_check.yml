@@ -19,7 +19,8 @@ jobs:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
-      - run: gcloud auth configure-docker && gcloud auth activate-service-account
+      - run: gcloud auth activate-service-account 'treebeard-integ-tests@treebeard-259315.iam.gserviceaccount.com' --key-file ${{ secrets.GCP_SA_KEY }}
+      - run: gcloud auth configure-docker
       - run: docker pull gcr.io/treebeard-259315/ipywidgets
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
