@@ -19,11 +19,8 @@ jobs:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
-      - uses: elgohr/gcloud-login-action@master
-        with:
-          account_key: ${{ secrets.GCP_SA_KEY }}
-      # - run: gcloud auth configure-docker && gcloud auth login
-      - run: docker pull gcr.io/treebeard-259315/actions-test
+      - run: gcloud auth configure-docker
+      - run: docker pull gcr.io/treebeard-259315/ipywidgets
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
       - run: printenv
