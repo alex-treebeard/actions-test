@@ -4,3 +4,6 @@ env: flex
 # network:
 # forwarded_ports:
 # - 8888:8888
+manual_scaling:
+  instances: 1
+instance_class: B8
