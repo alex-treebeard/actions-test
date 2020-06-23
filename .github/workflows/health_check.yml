@@ -13,6 +13,12 @@ jobs:
           aws-region: eu-central-1
       - uses: aws-actions/amazon-ecr-login@v1
         id: login-ecr
+      - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+      - run: docker pull gcr.io/treebeard-259315/ipywidgets
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
       - run: printenv
