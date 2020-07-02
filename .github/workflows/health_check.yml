@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - uses: treebeardtech/treebeard@master
+      - uses: treebeardtech/treebeard@pull-request-support
         with:
           docker-username: treebeardtech
           docker-password: "${{ secrets.DOCKER_PASSWORD }}"
