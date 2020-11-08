@@ -5,7 +5,7 @@ on:
 jobs:
   run_1:
     runs-on: ubuntu-latest
-    name: Run notebooks on treebeard
+    name: Run notebooks on treebeard branch
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
@@ -17,11 +17,22 @@ jobs:
    
   run_2:
     runs-on: ubuntu-latest
-    name: Run notebooks on treebeard 2
+    name: Run notebooks on treebeard sha
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - uses: treebeardtech/treebeard@b035006fab66f832e248eb647019625848f693f9
+      - uses: treebeardtech/treebeard@aa0023b965136c402b39a2fac7341ca9cd7acffb
+        with:
+          docker-username: alextreebeard
+          docker-password: "${{ secrets.DOCKER_PASSWORD }}"
+          docker-image-name: treebeardtech/actions-test
+  run_3:
+    runs-on: ubuntu-latest
+    name: Run notebooks on treebeard tag
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: treebeardtech/treebeard@x
         with:
           docker-username: alextreebeard
           docker-password: "${{ secrets.DOCKER_PASSWORD }}"
