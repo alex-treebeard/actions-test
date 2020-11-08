@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - uses: treebeardtech/treebeard@4f2b933
+      - uses: treebeardtech/treebeard@b035006fab66f832e248eb647019625848f693f9
         with:
           docker-username: alextreebeard
           docker-password: "${{ secrets.DOCKER_PASSWORD }}"
