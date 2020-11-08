@@ -3,7 +3,7 @@ on:
   push:
 
 jobs:
-  run 1:
+  run_1:
     runs-on: ubuntu-latest
     name: Run notebooks on treebeard
     steps:
@@ -15,7 +15,7 @@ jobs:
           docker-password: "${{ secrets.DOCKER_PASSWORD }}"
           docker-image-name: treebeardtech/actions-test
    
-  run 2:
+  run_2:
     runs-on: ubuntu-latest
     name: Run notebooks on treebeard 2
     steps:
