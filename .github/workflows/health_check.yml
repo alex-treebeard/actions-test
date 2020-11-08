@@ -3,7 +3,7 @@ on:
   push:
 
 jobs:
-  run:
+  run 1:
     runs-on: ubuntu-latest
     name: Run notebooks on treebeard
     steps:
@@ -14,14 +14,15 @@ jobs:
           docker-username: alextreebeard
           docker-password: "${{ secrets.DOCKER_PASSWORD }}"
           docker-image-name: treebeardtech/actions-test
-          
-runs-on: ubuntu-latest
-name: Run notebooks on treebeard 2
-steps:
-  - uses: actions/checkout@v2
-  - uses: actions/setup-python@v2
-  - uses: treebeardtech/treebeard@4f2b933
-    with:
-      docker-username: alextreebeard
-      docker-password: "${{ secrets.DOCKER_PASSWORD }}"
-      docker-image-name: treebeardtech/actions-test
+   
+  run 2:
+    runs-on: ubuntu-latest
+    name: Run notebooks on treebeard 2
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: treebeardtech/treebeard@4f2b933
+        with:
+          docker-username: alextreebeard
+          docker-password: "${{ secrets.DOCKER_PASSWORD }}"
+          docker-image-name: treebeardtech/actions-test
