@@ -9,8 +9,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - uses: treebeardtech/treebeard@master
+      - uses: treebeardtech/treebeard@fix-git
         with:
           docker-username: alextreebeard
           docker-password: "${{ secrets.DOCKER_PASSWORD }}"
           docker-image-name: treebeardtech/actions-test
+          
+runs-on: ubuntu-latest
+name: Run notebooks on treebeard 2
+steps:
+  - uses: actions/checkout@v2
+  - uses: actions/setup-python@v2
+  - uses: treebeardtech/treebeard@3596dccab76fac185639648442a7c7b159390f97
+    with:
+      docker-username: alextreebeard
+      docker-password: "${{ secrets.DOCKER_PASSWORD }}"
+      docker-image-name: treebeardtech/actions-test
