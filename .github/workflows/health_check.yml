@@ -1,18 +1,42 @@
 on:
   pull_request:
   push:
-  schedule:
-    - cron: "*/30 * * * *"
 
 jobs:
-  run:
+  run_1:
     runs-on: ubuntu-latest
-    name: Run notebooks on treebeard
+    name: Run notebooks on treebeard branch
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - uses: treebeardtech/treebeard@pull-request-support
+      - uses: treebeardtech/hello_treebeard@master
         with:
-          docker-username: treebeardtech
+          docker-username: alextreebeard
           docker-password: "${{ secrets.DOCKER_PASSWORD }}"
           docker-image-name: treebeardtech/actions-test
+          debug: true
+   
+  run_2:
+    runs-on: ubuntu-latest
+    name: Run notebooks on treebeard sha
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: treebeardtech/treebeard@aa0023b965136c402b39a2fac7341ca9cd7acffb
+        with:
+          docker-username: alextreebeard
+          docker-password: "${{ secrets.DOCKER_PASSWORD }}"
+          docker-image-name: treebeardtech/actions-test
+          debug: true
+  run_3:
+    runs-on: ubuntu-latest
+    name: Run notebooks on treebeard tag
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: treebeardtech/treebeard@x
+        with:
+          docker-username: alextreebeard
+          docker-password: "${{ secrets.DOCKER_PASSWORD }}"
+          docker-image-name: treebeardtech/actions-test
+          debug: true
